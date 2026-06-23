@@ -1,0 +1,304 @@
+INSTRUMENTO DE EVALUACIÓN
+FO-ACA-13
+versión 1
+
+Asignatura:
+
+Administración
+de Base de Datos
+
+Carrera y
+semestre:
+
+No. de tema:
+
+UNIDAD 4
+
+Nombre del
+tema:
+
+ING. EN SISTEMAS COMPUTACIONALES
+
+sexto semestre
+
+Plan:
+
+2010-224
+
+OPERACIÓN Y MANTENIMIENTO
+
+Fecha:
+
+08/05/2026
+
+Nombre
+estudiante:
+
+Firma:
+
+Curso ordinario
+
+Calificación:
+
+Tipo de evaluación (Marque con una X)
+Curso ordinario
+semipresencial
+
+Curso de repetición
+
+Curso especial
+
+Instrucciones: Realiza la siguiente práctica en tu computadora y al final agrega las evidencias
+solicitadas.
+Una empresa desea un sistema web interno que permita a los administradores:
+•
+•
+•
+•
+•
+
+Conectarse a SQL Server desde navegador
+Explorar bases de datos
+Ejecutar consultas SQL
+Administrar información
+Visualizar resultados dinámicamente
+
+Dashboard Web para Administración de SQL Server 2022
+Tecnologías obligatorias
+• SQL Server 2022
+Desarrollar una aplicación web tipo “Administrador SQL” que permita:
+•
+•
+•
+•
+•
+•
+
+Conectarse dinámicamente a SQL Server
+Mostrar todas las bases de datos del servidor
+Seleccionar una base de datos
+Ejecutar instrucciones SQL desde una interfaz web
+Mostrar resultados en tiempo real
+Administrar datos mediante:
+➢
+➢
+➢
+➢
+
+FO-ACA-13
+
+SELECT
+INSERT
+UPDATE
+DELETE
+
+Versión 1
+
+Cualquier documento no identificado como Controlado se considera COPIA NO CONTROLADA y no es auditable.
+
+Fecha: 25/10/2018
+
+INSTRUMENTO DE EVALUACIÓN
+FO-ACA-13
+versión 1
+
+Funcionalidades Obligatorias
+Módulo 1 — Pantalla de conexión
+El sistema debe permitir ingresar:
+Campo
+Servidor
+Usuario SQL
+Contraseña
+Puerto
+
+Descripción
+localhost
+sa
+contraseña SQL Server
+1433
+
+Botón:
+•
+
+Conectar
+
+Resultado esperado
+Al conectarse:
+•
+•
+•
+
+Validar conexión
+Mostrar mensaje:
+o “Conexión exitosa”
+Guardar sesión
+
+FO-ACA-13
+
+Versión 1
+
+Cualquier documento no identificado como Controlado se considera COPIA NO CONTROLADA y no es auditable.
+
+Fecha: 25/10/2018
+
+INSTRUMENTO DE EVALUACIÓN
+FO-ACA-13
+versión 1
+
+Módulo 2 — Dashboard Principal
+Debe mostrar:
+•
+•
+•
+•
+•
+
+Nombre del servidor
+Estado de conexión
+Usuario conectado
+Fecha y hora
+Total de bases de datos
+
+FO-ACA-13
+
+Versión 1
+
+Cualquier documento no identificado como Controlado se considera COPIA NO CONTROLADA y no es auditable.
+
+Fecha: 25/10/2018
+
+INSTRUMENTO DE EVALUACIÓN
+FO-ACA-13
+versión 1
+
+Módulo 3 — Explorador de Bases de Datos
+La aplicación debe consultar:
+SELECT name
+FROM sys.databases
+ORDER BY name;
+
+Y mostrar:
+•
+•
+•
+
+Lista de bases de datos
+Selector desplegable
+Botón “Conectarse a BD”
+
+Módulo 4 — Consola SQL
+La parte principal del sistema será un editor SQL.
+Debe permitir escribir:
+SELECT * FROM Usuarios;
+INSERT INTO Usuarios(nombre) VALUES('Juan');
+UPDATE Usuarios SET nombre='Pedro' WHERE id=1;
+DELETE FROM Usuarios WHERE id=1;
+
+Características del editor SQL
+Debe incluir:
+•
+•
+•
+•
+•
+•
+
+Área de texto grande
+Botón “Ejecutar SQL”
+Botón “Limpiar”
+Mostrar tiempo de ejecución
+Mostrar errores SQL
+Mostrar cantidad de filas afectadas
+
+FO-ACA-13
+
+Versión 1
+
+Cualquier documento no identificado como Controlado se considera COPIA NO CONTROLADA y no es auditable.
+
+Fecha: 25/10/2018
+
+INSTRUMENTO DE EVALUACIÓN
+FO-ACA-13
+versión 1
+
+Módulo 5 — Resultados Dinámicos
+La aplicación debe:
+
+Si es SELECT
+Mostrar:
+•
+•
+•
+
+Tabla dinámica
+Columnas automáticas
+Datos obtenidos
+
+FO-ACA-13
+
+Versión 1
+
+Cualquier documento no identificado como Controlado se considera COPIA NO CONTROLADA y no es auditable.
+
+Fecha: 25/10/2018
+
+INSTRUMENTO DE EVALUACIÓN
+FO-ACA-13
+versión 1
+
+Si es INSERT/UPDATE/DELETE
+Mostrar:
+•
+•
+
+“Consulta ejecutada correctamente”
+Filas afectadas
+
+Evidencias solicitadas
+Evidencia 1
+Conexión exitosa a SQL Server
+
+Evidencia 2
+Listado de bases de datos
+
+Evidencia 3
+Selección de una base de datos
+
+Evidencia 4
+Consulta SELECT funcionando
+
+FO-ACA-13
+
+Versión 1
+
+Cualquier documento no identificado como Controlado se considera COPIA NO CONTROLADA y no es auditable.
+
+Fecha: 25/10/2018
+
+INSTRUMENTO DE EVALUACIÓN
+FO-ACA-13
+versión 1
+
+Evidencia 5
+INSERT exitoso
+
+Evidencia 6
+UPDATE exitoso
+
+Evidencia 7
+DELETE exitoso
+
+Resultado esperado
+Al finalizar, el estudiante habrá desarrollado un mini administrador profesional de SQL Server accesible
+desde navegador, capaz de ejecutar consultas reales sobre cualquier base de datos del servidor.
+
+FO-ACA-13
+
+Versión 1
+
+Cualquier documento no identificado como Controlado se considera COPIA NO CONTROLADA y no es auditable.
+
+Fecha: 25/10/2018
+
+

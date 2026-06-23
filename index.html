@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía interactiva y dinámica para el examen de React. Practica hooks, props, estado y renderizado con preguntas adaptativas, explicaciones y mnemotecnias.">
+    <title>ReactPrep - Simulador Dinámico de Examen de React</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Elements for Premium Look -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <div class="app-container">
+        <!-- Header / Navigation -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-brands fa-react logo-icon"></i>
+                <div class="logo-text">
+                    <h1>ReactPrep</h1>
+                    <span>Guía de Examen de React</span>
+                </div>
+            </div>
+            <nav class="app-nav">
+                <button id="nav-btn-quiz" class="nav-btn active" onclick="switchTab('quiz')">
+                    <i class="fa-solid fa-graduation-cap"></i> Practicar
+                </button>
+                <button id="nav-btn-guide" class="nav-btn" onclick="switchTab('guide')">
+                    <i class="fa-solid fa-book-medical"></i> Biblioteca
+                </button>
+                <button id="nav-btn-custom" class="nav-btn" onclick="switchTab('custom')">
+                    <i class="fa-solid fa-circle-plus"></i> Crear Examen
+                </button>
+            </nav>
+            <div class="theme-toggle-container">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar Tema">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="app-main">
+            <!-- TAB 1: QUIZ / PRACTICE -->
+            <section id="tab-quiz" class="tab-content active">
+                <div class="quiz-layout">
+                    <!-- Sidebar: Dashboard Stats & Categories -->
+                    <div class="quiz-sidebar">
+                        <!-- Stats Card -->
+                        <div class="card stats-card">
+                            <h3><i class="fa-solid fa-chart-simple"></i> Tu Progreso</h3>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-value" id="stat-streak">0</span>
+                                    <span class="stat-label">Racha Activa</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value" id="stat-accuracy">0%</span>
+                                    <span class="stat-label">Precisión</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value" id="stat-solved">0</span>
+                                    <span class="stat-label">Resueltas</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value" id="stat-score">0</span>
+                                    <span class="stat-label">Puntaje</span>
+                                </div>
+                            </div>
+                            <div class="stat-progress-bar-container">
+                                <div class="stat-progress-bar-label">
+                                    <span>Nivel de Aprendizaje</span>
+                                    <span id="stat-level-percent">0%</span>
+                                </div>
+                                <div class="progress-bar-outer">
+                                    <div class="progress-bar-inner" id="stat-level-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categories Card -->
+                        <div class="card categories-card">
+                            <h3><i class="fa-solid fa-tags"></i> Categorías</h3>
+                            <div class="categories-list" id="categories-list">
+                                <!-- Categories loaded dynamically -->
+                            </div>
+                        </div>
+                        
+                        <!-- Reset Progress Link -->
+                        <button class="btn-text" id="btn-reset-progress">
+                            <i class="fa-solid fa-trash-can"></i> Reiniciar estadísticas
+                        </button>
+                    </div>
+
+                    <!-- Main Quiz Play Area -->
+                    <div class="quiz-play-area">
+                        <!-- Question Card -->
+                        <div class="card quiz-card" id="quiz-card">
+                            <div class="quiz-card-header">
+                                <span class="badge" id="question-category">Exploración Abdominal</span>
+                                <div class="difficulty-indicator">
+                                    <span class="dot active"></span>
+                                    <span class="dot active"></span>
+                                    <span class="dot"></span>
+                                    <span id="question-difficulty">Intermedio</span>
+                                </div>
+                            </div>
+
+                            <div class="question-container">
+                                <h2 id="question-text">¿Qué maniobra se realiza presionando suave pero profundamente el punto de McBurney y soltando de forma súbita para evaluar rebote?</h2>
+                            </div>
+
+                            <!-- Interactive Dynamic Options -->
+                            <div class="options-container" id="options-container">
+                                <!-- Options will be injected here dynamically -->
+                            </div>
+
+                            <!-- Explanations and Hints (Hidden initially, slides down) -->
+                            <div class="feedback-panel" id="feedback-panel" style="display: none;">
+                                <div class="feedback-header">
+                                    <div class="feedback-icon-container">
+                                        <i class="fa-solid fa-circle-check" id="feedback-icon"></i>
+                                    </div>
+                                    <div class="feedback-title-container">
+                                        <h4 id="feedback-title">¡Respuesta Correcta!</h4>
+                                        <p id="feedback-subtitle">Excelente deducción clínica.</p>
+                                    </div>
+                                </div>
+                                <div class="feedback-body">
+                                    <div class="explanation-section">
+                                        <h5><i class="fa-brands fa-react"></i> Explicación</h5>
+                                        <p id="feedback-explanation">...</p>
+                                    </div>
+                                    <div class="mnemonic-section" id="feedback-mnemonic-wrapper">
+                                        <h5><i class="fa-solid fa-lightbulb"></i> Mnemotecnia de Aprendizaje</h5>
+                                        <div class="mnemonic-box" id="feedback-mnemonic">
+                                            <strong>B-lumberg</strong> = ¡<strong>B</strong>oom! (Dolor al soltar con fuerza súbita / rebote).
+                                        </div>
+                                    </div>
+                                    <div class="details-table-section" id="feedback-table-wrapper" style="display: none;">
+                                        <!-- Table generated dynamically if necessary -->
+                                    </div>
+                                </div>
+                                <div class="feedback-actions">
+                                    <button class="btn btn-secondary" id="btn-challenge-again" title="Cambia las respuestas falsas y vuelve a intentar esta misma pregunta">
+                                        <i class="fa-solid fa-arrows-rotate"></i> Cambiar Opciones
+                                    </button>
+                                    <button class="btn btn-primary" id="btn-next-question">
+                                        Siguiente Pregunta <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mechanic Explanation Helper Banner -->
+                        <div class="info-banner">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <p><strong>Mecánica Dinámica:</strong> Si fallas, la opción incorrecta se sustituye por otra de forma aleatoria y las respuestas se reorganizan. ¡La respuesta correcta siempre permanece! Sigue intentándolo hasta descubrirla.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: LIBRARY / GUIDE -->
+            <section id="tab-guide" class="tab-content">
+                <div class="card guide-header-card">
+                    <h2>Biblioteca de Conceptos de React</h2>
+                    <p>Fichas de estudio completas con las respuestas correctas, justificaciones y consejos prácticos de memorización.</p>
+                    <div class="search-bar-container">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="guide-search" placeholder="Buscar por hook, concepto, descripción o categoría...">
+                    </div>
+                </div>
+
+                <div class="guide-grid" id="guide-grid">
+                    <!-- Dynamic study cards injected here -->
+                </div>
+            </section>
+
+            <!-- TAB 3: CUSTOM EXAM CREATOR -->
+            <section id="tab-custom" class="tab-content">
+                <div class="custom-exam-layout">
+                    <div class="card form-card">
+                        <h2>Crear Preguntas de React</h2>
+                        <p>Diseña tus propias preguntas para estudiar temas específicos. Las preguntas creadas se guardan localmente y se integrarán automáticamente al simulador dinámico.</p>
+                        
+                        <form id="custom-question-form" class="custom-form">
+                            <div class="form-group">
+                                <label for="custom-category">Categoría o Tema</label>
+                                <input type="text" id="custom-category" placeholder="Ej. useState & Estado, useEffect & Efectos..." required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="custom-difficulty">Dificultad</label>
+                                    <select id="custom-difficulty">
+                                        <option value="Fácil">Fácil</option>
+                                        <option value="Intermedio" selected>Intermedio</option>
+                                        <option value="Difícil">Difícil</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="custom-question">Pregunta o Planteamiento de React</label>
+                                <textarea id="custom-question" rows="3" placeholder="Ej. ¿Qué hook utilizarías para evitar pasar un tema oscuro por props a muchos niveles?" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="custom-correct">Respuesta Correcta</label>
+                                <input type="text" id="custom-correct" placeholder="Ej. useContext" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Opciones Incorrectas (Distractores) <span class="label-info">(Mínimo 3, ingresa hasta 6 para la mecánica de cambio dinámico)</span></label>
+                                <div class="distractor-inputs">
+                                    <input type="text" class="custom-distractor" placeholder="Distractor 1 (Ej. Signo de McBurney)" required>
+                                    <input type="text" class="custom-distractor" placeholder="Distractor 2 (Ej. Signo de Courvoisier-Terrier)" required>
+                                    <input type="text" class="custom-distractor" placeholder="Distractor 3 (Ej. Signo de Rovsing)" required>
+                                    <input type="text" class="custom-distractor" placeholder="Distractor 4 (Opcional - Ej. Signo de Cullen)">
+                                    <input type="text" class="custom-distractor" placeholder="Distractor 5 (Opcional - Ej. Signo de Grey Turner)">
+                                    <input type="text" class="custom-distractor" placeholder="Distractor 6 (Opcional)">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="custom-explanation">Explicación / Por qué es correcta</label>
+                                <textarea id="custom-explanation" rows="3" placeholder="Ej. useContext permite compartir datos globales como temas o usuarios entre componentes sin recurrir a prop drilling." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="custom-mnemonic">Mnemotecnia o Regla de Memorización (Opcional)</label>
+                                <input type="text" id="custom-mnemonic" placeholder="Ej. Context = Teletransporte de datos">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fa-solid fa-floppy-disk"></i> Guardar y Añadir al Examen
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="custom-list-area">
+                        <div class="card custom-questions-card">
+                            <h3>Preguntas Personalizadas Guardadas (<span id="custom-questions-count">0</span>)</h3>
+                            <div class="custom-questions-list" id="custom-questions-list">
+                                <div class="empty-state">
+                                    <i class="fa-solid fa-folder-open"></i>
+                                    <p>Aún no has creado preguntas personalizadas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Import/Export Config -->
+                        <div class="card backup-card">
+                            <h3><i class="fa-solid fa-file-export"></i> Copia de seguridad y Datos</h3>
+                            <p>Exporta tus preguntas personalizadas o importa preguntas en formato JSON.</p>
+                            <div class="backup-actions">
+                                <button class="btn btn-secondary btn-sm" id="btn-export-questions">
+                                    <i class="fa-solid fa-download"></i> Exportar JSON
+                                </button>
+                                <button class="btn btn-secondary btn-sm" onclick="document.getElementById('import-file-input').click()">
+                                    <i class="fa-solid fa-upload"></i> Importar JSON
+                                </button>
+                                <input type="file" id="import-file-input" style="display: none;" accept=".json">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 ReactPrep - Plataforma Interactiva de Aprendizaje y Simulación.</p>
+            <p class="footer-subtext">Diseñado para ayudar a desarrolladores y estudiantes a dominar React Hooks, Props y Estado.</p>
+        </footer>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">
+        <span id="toast-message">Mensaje de notificación</span>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
